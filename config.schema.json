@@ -9,7 +9,7 @@
       "type": "string",
       "description": "The name of the folder which will contain the symlinks."
     },
-    "containingFolder": {
+    "parentFolder": {
       "title": "Parent Folder",
       "type": "string",
       "description": "Absolute path to the folder in which the readable addons folder is made. It must already exist.",
