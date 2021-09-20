@@ -6,16 +6,16 @@ This addon creates a folder next to the original addons folder which contains sy
 
 ## Usage
 
-The folder and symlinks are created upon starting Anki. If a new addon is installed, a new symlink won't be created until Anki is restarted. Old/invalid symlinks are automatically removed.
+The folder and symlinks are created upon starting Anki. If a new addon is installed, the new symlink will be created once Anki is restarted. Old/invalid symlinks are automatically removed.
 
 ## Configuration
 
-### folderName
+### `folderName`
 
 - The name of the folder which will contain the symlinks.
 - Empty string ("") for default value ("readableAddons").
 
-### parentFolder
+### `parentFolder`
 
 - Absolute path to the folder in which the readable addons folder is made. It must already exist.
 - Empty string ("") for default value (next to original addons folder).
