@@ -1,4 +1,4 @@
-# Anki Readable Addons Folder
+# anki-readable-addons-folder
 
 By default, the Anki addons folder stores each installed addon by its AnkiWeb addon id. This makes it very difficult to tell which folder corresponds with a given addon.
 
