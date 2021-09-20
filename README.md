@@ -1,40 +1,27 @@
-# Having readable add-on folder
-## Rationale
-The add-ons folder contains one folder by add-on. Each folder's name
-is a string of digit. This is quite horrible for a human who want to
-go read or edit the code of an add-on.
+# Anki Readable Addons Folder
 
-Thus, this add-on create another folder, containing symlinks with the
-name of the add-on to the add-on folder.
+By default, the Anki addons folder stores each installed addon by its AnkiWeb addon id. This makes it very difficult to tell which folder corresponds with a given addon.
 
-## Warning
-This does not work on windows. Because this add-ons create symbolic
-links, and windows can't create them without admin privilege.
+This addon creates a folder next to the original addons folder which contains symlinks to each installed addon. These symlinks are named after each addon's actual name, making it easy to navigate to the desired addon folder.
 
 ## Usage
-Install this add-on and start anki. That's all. The symlinks are
-created while anki start. If you install a new add-on, it's symlink
-won't be created untill you restart anki.
 
-Note also that symlinks are not deleted. Thus a symlink may break if
-you delete an add-on. (TODO: change that ?)
+The folder and symlinks are created upon starting Anki. If a new addon is installed, a new symlink won't be created until Anki is restarted. Old/invalid symlinks are automatically removed.
 
 ## Configuration
-By default the new folder is in the same folder than the original
-addons directory. You can change this directory in newFolder.
 
-The name of the new folder, by default, is "namedAddons", it can also
-be changed.
+### folderName
 
-## Version 2.0
-None
+- The name of the folder which will contain the symlinks.
+- Empty string ("") for default value ("readableAddons").
 
-## Links, licence and credits
+### parentFolder
 
-Key         |Value
-------------|-------------------------------------------------------------------
-Copyright   | Arthur Milchior <arthur@milchior.fr>
-Based on    | Anki code by Damien Elmes <anki@ichi2.net>
-License     | GNU AGPL, version 3 or later; http://www.gnu.org/licenses/agpl.html
-Source in   | https://github.com/Arthur-Milchior/anki-readable-addons-folders
-Addon number| [519936472](https://ankiweb.net/shared/info/519936472)
+- Absolute path to the folder in which the readable addons folder is made. It must already exist.
+- Empty string ("") for default value (next to original addons folder).
+
+## Credits
+
+This addon is directly based on Arthur-Milchior's [anki-readable-addon-folders](https://github.com/Arthur-Milchior/anki-readable-addon-folders).
+
+This also incorporates fixes written by [jakublevy](https://github.com/jakublevy): [[Feature] Windows support, remove symlinks of uninstalled add-ons](https://github.com/Arthur-Milchior/anki-readable-addon-folders/pull/4)

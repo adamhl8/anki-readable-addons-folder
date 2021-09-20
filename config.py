@@ -3,13 +3,13 @@ import os.path
 from aqt import mw
 
 
-def getNewFolder():
+def getReadableAddonsFolder():
     userOption = mw.addonManager.getConfig(__name__)
-    newContainingFolder = userOption.get("containingFolder")
-    newFolderName = userOption.get("newFolderName")
-    if newContainingFolder is None:
+    parentFolder = userOption.get("parentFolder")
+    folderName = userOption.get("folderName")
+    if not parentFolder:
         mw.pm.addonFolder()  # ensure that base is set.
-        newContainingFolder = mw.pm.base
-    if newFolderName is None:
-        newFolderName = "namedAddons"
-    return os.path.join(newContainingFolder, newFolderName)
+        parentFolder = mw.pm.base
+    if not folderName:
+        folderName = "readableAddons"
+    return os.path.join(parentFolder, folderName)

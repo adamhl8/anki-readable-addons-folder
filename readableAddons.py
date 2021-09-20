@@ -4,18 +4,24 @@ import os.path
 import sys
 
 from aqt import mw
+from anki.utils import isWin
 
-from .config import getNewFolder
+from .config import getReadableAddonsFolder
 
 originalFolder = mw.pm.addonFolder()
-newFolder = getNewFolder()
-if not os.path.exists(newFolder):
+readableAddonsFolder = getReadableAddonsFolder()
+if not os.path.exists(readableAddonsFolder):
     try:
-        os.makedirs(newFolder)
+        os.makedirs(readableAddonsFolder)
     except PermissionError:
         print(
-            (f"""There is an error with the configuration of the addon "Add-on folder with readable names". Currently, it asks to use directory {originalFolder}, and you don't have the permissions to create a folder there. So, either you should change the permission of this folder, or you should select another folder.""", sys.stderr))
+            (
+                f"""There is an error with the configuration of the addon "Readable Addons Folder". It is trying to create the folder {readableAddonsFolder}, but you don't have permission to create a folder there.""",
+                sys.stderr,
+            )
+        )
 
+installedAddonNames = set()
 for fileName in os.listdir(originalFolder):
     originalAddonDir = os.path.join(originalFolder, fileName)
     if os.path.isdir(originalAddonDir):
@@ -28,6 +34,15 @@ for fileName in os.listdir(originalFolder):
                 name = j["name"]
         else:
             name = fileName
-        newAddonDir = os.path.join(newFolder, name)
+        installedAddonNames.add(name)
+        newAddonDir = os.path.join(readableAddonsFolder, name)
         if not os.path.exists(newAddonDir):
-            os.symlink(originalAddonDir, newAddonDir)
+            if isWin:
+                os.system(r'mklink /J "{}" "{}"'.format(newAddonDir, originalAddonDir))
+            else:
+                os.symlink(originalAddonDir, newAddonDir)
+
+invalidSymlinks = set(os.listdir(readableAddonsFolder)) - installedAddonNames
+for invalidSymlinkName in invalidSymlinks:
+    invalidSymlinkPath = os.path.join(readableAddonsFolder, invalidSymlinkName)
+    os.remove(invalidSymlinkPath)

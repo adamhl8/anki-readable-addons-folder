@@ -1,2 +1,9 @@
-* "newFolderName": The name of the folder in which the symlinks are created. Null for default value.
-* "containingFolder": The folder in which the new folder is made. It should exists. Null for default value. This name should be absolute.
+### folderName
+
+- The name of the folder which will contain the symlinks.
+- Empty string ("") for default value ("readableAddons").
+
+### parentFolder
+
+- Absolute path to the folder in which the readable addons folder is made. It must already exist.
+- Empty string ("") for default value (next to original addons folder).
