@@ -1,0 +1,6 @@
+__pycache__
+__pypackages__
+.ruff_cache
+.pdm-python
+.python-version
+build

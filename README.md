@@ -2,7 +2,7 @@
 
 By default, the Anki addons folder stores each installed addon by its AnkiWeb addon id. This makes it very difficult to tell which folder corresponds with a given addon.
 
-This addon creates a folder next to the original addons folder which contains symlinks to each installed addon. These symlinks are named after each addon's actual name, making it easy to navigate to the desired addon folder.
+This addon creates a folder next to the original addons folder which contains readable symlinks to each installed addon. These symlinks are named after each addon's actual name, making it easy to navigate to the desired addon folder.
 
 ## Usage
 
@@ -12,13 +12,7 @@ The folder and symlinks are created upon starting Anki. If a new addon is instal
 
 ### `folderName`
 
-- The name of the folder which will contain the symlinks.
-- Empty string ("") for default value ("readableAddons").
-
-### `parentFolder`
-
-- Absolute path to the folder in which the readable addons folder is made. It must already exist.
-- Empty string ("") for default value (next to original addons folder).
+- The name of the folder which will contain the readable addon folders.
 
 ## Credits
 

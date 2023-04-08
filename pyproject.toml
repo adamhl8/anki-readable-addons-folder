@@ -1,0 +1,43 @@
+[project]
+name = "anki-readable-addons-folder"
+version = "1.0.1"
+description = "Anki addon that creates a folder next to the original addons folder which contains readable symlinks to each installed addon."
+authors = [
+    {name = "adamhl8", email = "adamhl@pm.me"},
+]
+dependencies = [
+    "aqt[qt6]>=2.1.61",
+]
+requires-python = ">=3.9"
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "black>=23.1.0",
+    "ruff>=0.0.257",
+]
+
+[tool.pdm.scripts]
+pyright = {shell = "pyright src"}
+ruff = {cmd = "ruff check src"}
+lint = {composite = ["pyright", "ruff"]}
+format = {cmd = "black src"}
+
+[tool.pyright]
+typeCheckingMode = "strict"
+extraPaths = ["__pypackages__/3.9/lib", "src"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py39"
+select = ["E", "F", "W", "I", "N", "UP", "BLE", "FBT", "B", "A", "COM", "C4", "T10", "EM", "EXE", "ISC", "ICN", "G",
+"INP", "PIE", "PYI", "PT", "Q", "RSE", "RET", "SLF", "SIM", "TID", "TCH", "ARG", "PTH", "ERA", "PL", "PLC", "PLE",
+"PLR", "PLW", "TRY", "RUF"]
+ignore = []
+
+[tool.black]
+line-length = 120
+target-version = ["py39"]
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
