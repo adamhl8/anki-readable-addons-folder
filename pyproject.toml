@@ -1,6 +1,6 @@
 [project]
 name = "anki-readable-addons-folder"
-version = "1.0.1"
+version = "1.0.2"
 description = "Anki addon that creates a folder next to the original addons folder which contains readable symlinks to each installed addon."
 authors = [
     {name = "adamhl8", email = "adamhl@pm.me"},

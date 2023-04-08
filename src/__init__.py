@@ -12,11 +12,10 @@ if config is None:
     message = "config is None"
     raise RuntimeError(message)
 
-folder_name = config.get("folderName") or "Readable Addons"
-readable_addons_path = (Path(mw.pm.addonFolder()).parent / folder_name).resolve()
-readable_addons_path.mkdir(exist_ok=True)
-
 anki_addons_path = Path(mw.pm.addonFolder())
+folder_name = config.get("folderName") or "Readable Addons"
+readable_addons_path = (anki_addons_path.parent / folder_name).resolve()
+readable_addons_path.mkdir(exist_ok=True)
 
 installed_addons: set[str] = set()
 for addon_dir in anki_addons_path.iterdir():
